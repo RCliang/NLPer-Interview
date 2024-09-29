@@ -1,6 +1,6 @@
 ## 问题总结
 ### Q1： Transformer怎么来防止梯度消失
-答案：在qkv计算的时候使用/sqrt（d-model）的方式来
+答案：在qkv计算的时候使用/sqrt（d-model）的方式来,除以sqrt(dk)的目的是使注意力得分归一化，相当于除以标准差。
 ### Q2：Layer Normalization和Batch Normalization的区别与机制
 答案：BN是针对学习样本的整个mini-batch之间比如每个词的样本间纵向地做标准化，每次都要记录mu和方差，而LN是在一个样本的横向所有维度来做标准化。BN主要用于图像方面，LN主要用于自然语言处理。
 ### Q3：为什么gpt只用decoder
@@ -59,6 +59,9 @@ GLM主要创新了自回归填空算法：NLU任务15%的mask，遮挡采用连�
 ### Bert的缺点，比如掩码等，后面怎么改进的
 
 ### HMM和马尔可夫链
+HMM是生成式模型，CRF是判别式模型
+HMM是有向概率图模型，CRF是无向概率图模型
+CRF概率归一化较合理，HMM有标签偏置的问题
 
 ### 要点
 - 详细准备Transformer结构的问题
